@@ -6,7 +6,8 @@
     "baseUrl": ".",
     "paths": {
       "@auth/*": ["src/app/auth/*"],
-      "@gift-cards/*": ["src/app/gift-cards/*"]
+      "@gift-cards/*": ["src/app/gift-cards/*"],
+      "@shared/*": ["src/app/shared/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
