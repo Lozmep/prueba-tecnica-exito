@@ -5,7 +5,7 @@ import { LoginResponse } from '@auth/interfaces/login-response.interface'
   providedIn: 'root'
 })
 export class AuthService {
-  private tokenKey = 'authToken'
+  private tokenKey = ''
 
   login(username: string, password: string): LoginResponse {
     if (username === 'admin' && password === 'admin123') {
@@ -22,7 +22,7 @@ export class AuthService {
   private generateFakeToken(): string {
     const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
     const payload = btoa(JSON.stringify({ username: 'admin', role: 'admin', exp: Math.floor(Date.now() / 1000) + 3600 }))
-    const signature = 'fake-signature'
+    const signature = 'hashed-token-signature'
     return `${header}.${payload}.${signature}`
   }
 

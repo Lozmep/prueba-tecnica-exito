@@ -38,7 +38,7 @@ export class LoginPageComponent {
       this.authForm.reset({
         user: '',
         password: '',
-      });
+      })
     } else {
       alert('Usuario y/o contraseña incorrecta')
     }
