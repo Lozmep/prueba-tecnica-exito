@@ -17,7 +17,7 @@ Esta aplicación web fue desarrollada en Angular con el objetivo de permitir la 
    ```
 3. Configurar el environment:
    ```bash
-   modificar el archivo /src/environments/environment.ts y agregar el usuario y contraseña para el login.
+   modificar el archivo ./src/environments/environment.ts y agregar el usuario y contraseña para el login.
    ```
 3. Ejecutar la aplicación:
    ```bash
