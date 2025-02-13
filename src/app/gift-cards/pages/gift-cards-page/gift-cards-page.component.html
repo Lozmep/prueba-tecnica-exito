@@ -1,0 +1,96 @@
+
+<h1 class="text-3xl font-bold mt-5 text-center">Listado de tarjetas</h1>
+<main class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+  @if (isModalOpen()) {
+    <app-modal title="Movimientos de tarjeta" (modalClosed)="closeModal()">
+      <div class="w-full flex flex-col px-5">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead class="text-xs text-white bg-kiire-blue border-b-1 border-white">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                Fecha
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Tipo movimiento
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Monto
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (transaction of selectedGiftCard()?.movimientos; track transaction.fecha) {
+              <tr class="bg-kiire-blue border-b text-white">
+                <th class="px-6 py-4">
+                  {{transaction.fecha}}
+                </th>
+                <td class="px-6 py-4">
+                  {{transaction.tipoMovimiento}}
+                </td>
+                <td class="px-6 py-4">
+                  {{transaction.monto}}
+                </td>
+              </tr>
+              } @empty {
+                <tr class="bg-kiire-blue border-b text-white">
+                  <th scope="row" colspan="5" class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                    No hay datos disponibles
+                  </th>
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+    </app-modal>
+  }
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <thead class="text-xs text-white bg-kiire-blue border-b-1 border-white">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          ID
+        </th>
+        <th scope="col" class="px-6 py-3">
+          TARJETA
+        </th>
+        <th scope="col" class="px-6 py-3">
+          MONTO INICIAL
+        </th>
+        <th scope="col" class="px-6 py-3">
+          # TRANSACCIONES
+        </th>
+        <th scope="col" class="px-6 py-3">
+          # ACCIONES
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (giftCard of giftCards(); track giftCard.id) {
+        <tr class="bg-kiire-blue border-b text-white">
+          <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+            {{giftCard.id}}
+          </th>
+          <td class="px-6 py-4">
+            {{giftCard.numeroTarjeta}}
+          </td>
+          <td class="px-6 py-4">
+            {{giftCard.montoInicial}}
+          </td>
+          <td class="px-6 py-4">
+            {{giftCard.movimientos?.length}}
+          </td>
+          <td class="flex items-center px-6 py-4">
+            <a class="font-medium text-kiire-green2 hover:underline cursor-pointer" (click)="detailCard(giftCard)">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-file-description"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm3 14h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2m0 -4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+            </a>
+          </td>
+        </tr>
+        } @empty {
+          <tr class="bg-kiire-blue border-b text-white">
+            <th scope="row" colspan="5" class="px-6 py-4 font-medium whitespace-nowrap text-center">
+              No hay datos disponibles
+            </th>
+          </tr>
+        }
+    </tbody>
+  </table>
+</main>
