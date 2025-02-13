@@ -11,7 +11,7 @@ export class AuthService {
   private envs = environment
 
   login(username: string, password: string): LoginResponse {
-    if (username === this.envs.mockUser && password === this.envs.mockPassword) {
+    if (username?.toLowerCase() === this.envs.mockUser?.toLowerCase() && password === this.envs.mockPassword) {
       const fakeToken = this.generateFakeToken()
       const result: LoginResponse = { ok: true, status: 200, token: fakeToken }
       if (result.ok) {
@@ -20,6 +20,7 @@ export class AuthService {
       }
       return { ok: true, status: 200, token: fakeToken }
     }
+    alert('Usuario y/o Contraseña incorrecta')
     return { ok: false, status: 401, token: '' }
   }
   private generateFakeToken(): string {

@@ -20,7 +20,7 @@
                 class="bg-kiire-gray border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-70 md:w-80 p-2.5"
               />
               @if ( formUtils.isValidField( authForm, 'user') ) {
-                <span class="form-text text-red-200">
+                <span class="form-text text-red-400">
                   {{ formUtils.getFieldError(authForm, "user") }}
                 </span>
               }
@@ -35,7 +35,7 @@
                 class="bg-kiire-gray border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-70 md:w-80 p-2.5"
               />
               @if ( formUtils.isValidField( authForm, 'password') ) {
-                <span class="form-text text-red-200">
+                <span class="form-text text-red-400">
                   {{ formUtils.getFieldError(authForm, "password") }}
                 </span>
               }

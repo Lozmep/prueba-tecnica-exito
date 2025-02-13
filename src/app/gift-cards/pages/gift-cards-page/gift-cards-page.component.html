@@ -1,39 +1,39 @@
 
-<h1 class="text-3xl font-bold mt-5 text-center">Listado de tarjetas</h1>
-<main class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+<h1 class="text-3xl font-bold mt-5 text-center text-black bg-kiire-green2 py-2 md:py-3 rounded-lg">Listado de tarjetas</h1>
+<main class="relative overflow-x-auto mt-10">
   @if (isModalOpen()) {
     <app-modal title="Movimientos de tarjeta" (modalClosed)="closeModal()">
-      <div class="w-full flex flex-col px-5">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-          <thead class="text-xs text-white bg-kiire-blue border-b-1 border-white">
+      <div class="w-full flex flex-col px-5 bg-kiire-green2">
+        <table class="w-full text-sm text-left rtl:text-right border-kiire-blue">
+          <thead class="text-lg font-bold border-1 border-kiire-blue">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-6 py-3 border-1 border-kiire-blue">
                 Fecha
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-6 py-3 border-1 border-kiire-blue">
                 Tipo movimiento
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" class="px-6 py-3 border-1 border-kiire-blue">
                 Monto
               </th>
             </tr>
           </thead>
           <tbody>
             @for (transaction of selectedGiftCard()?.movimientos; track transaction.fecha) {
-              <tr class="bg-kiire-blue border-b text-white">
-                <th class="px-6 py-4">
+              <tr class="border-b text-black">
+                <th class="px-6 py-4 border-1 border-kiire-blue">
                   {{transaction.fecha}}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 border-1 border-kiire-blue font-medium">
                   {{transaction.tipoMovimiento}}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 border-1 border-kiire-blue font-medium">
                   {{transaction.monto}}
                 </td>
               </tr>
               } @empty {
-                <tr class="bg-kiire-blue border-b text-white">
-                  <th scope="row" colspan="5" class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                <tr class="text-kiire-blue">
+                  <th scope="row" colspan="5" class="px-6 py-4 font-medium whitespace-nowrap text-center text-kiire-blue">
                     No hay datos disponibles
                   </th>
                 </tr>
@@ -43,49 +43,43 @@
       </div>
     </app-modal>
   }
-  <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-    <thead class="text-xs text-white bg-kiire-blue border-b-1 border-white">
-      <tr>
-        <th scope="col" class="px-6 py-3">
-          ID
-        </th>
+  <table class="w-full text-sm text-left rtl:text-right text-kiire-blue border-2 border-kiire-blue">
+    <thead class="text-md lg:text-lg border-b-2 border-kiire-blue">
+      <tr class="text-center">
         <th scope="col" class="px-6 py-3">
           TARJETA
         </th>
-        <th scope="col" class="px-6 py-3">
+        <th scope="col" class="px-6 py-3 border-l-2">
           MONTO INICIAL
         </th>
-        <th scope="col" class="px-6 py-3">
+        <th scope="col" class="px-6 py-3 border-l-2">
           # TRANSACCIONES
         </th>
-        <th scope="col" class="px-6 py-3">
-          # ACCIONES
+        <th scope="col" class="px-6 py-3 border-l-2">
+          ACCIONES
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-lg text-center">
       @for (giftCard of giftCards(); track giftCard.id) {
-        <tr class="bg-kiire-blue border-b text-white">
-          <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-            {{giftCard.id}}
-          </th>
-          <td class="px-6 py-4">
+        <tr class="border-2">
+          <td class="px-6 py-4 font-bold">
             {{giftCard.numeroTarjeta}}
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 border-l-2">
             {{giftCard.montoInicial}}
           </td>
-          <td class="px-6 py-4">
+          <td class="px-6 py-4 border-l-2 border-r-2">
             {{giftCard.movimientos?.length}}
           </td>
-          <td class="flex items-center px-6 py-4">
-            <a class="font-medium text-kiire-green2 hover:underline cursor-pointer" (click)="detailCard(giftCard)">
-              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-file-description"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm3 14h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2m0 -4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
+          <td class="flex items-center justify-center px-6 py-4">
+            <a class="font-medium text-kiire-green1 cursor-pointer" (click)="detailCard(giftCard)">
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="32"  height="32"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-file-description"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2l.117 .007a1 1 0 0 1 .876 .876l.007 .117v4l.005 .15a2 2 0 0 0 1.838 1.844l.157 .006h4l.117 .007a1 1 0 0 1 .876 .876l.007 .117v9a3 3 0 0 1 -2.824 2.995l-.176 .005h-10a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-14a3 3 0 0 1 2.824 -2.995l.176 -.005zm3 14h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2m0 -4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2" /><path d="M19 7h-4l-.001 -4.001z" /></svg>
             </a>
           </td>
         </tr>
         } @empty {
-          <tr class="bg-kiire-blue border-b text-white">
+          <tr class="border-b text-kiire-blue">
             <th scope="row" colspan="5" class="px-6 py-4 font-medium whitespace-nowrap text-center">
               No hay datos disponibles
             </th>

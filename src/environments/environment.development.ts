@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  mockUser: '',
-  mockPassword: ''
+  mockUser: 'admin',
+  mockPassword: 'admin12345'
 }
