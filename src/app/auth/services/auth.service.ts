@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { LoginResponse } from '@auth/interfaces/login-response.interface'
+import { environment } from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,10 @@ import { LoginResponse } from '@auth/interfaces/login-response.interface'
 export class AuthService {
   private tokenKey = ''
 
+  private envs = environment
+
   login(username: string, password: string): LoginResponse {
-    if (username === 'admin' && password === 'admin123') {
+    if (username === this.envs.mockUser && password === this.envs.mockPassword) {
       const fakeToken = this.generateFakeToken()
       const result: LoginResponse = { ok: true, status: 200, token: fakeToken }
       if (result.ok) {
